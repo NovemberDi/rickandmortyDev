@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Person } from '@/interfaces/Person';
 
-interface MyPerson extends Person{
+interface MyPerson extends Person {
     episode: string
 }
 interface Props {
@@ -36,7 +36,7 @@ defineProps<Props>()
             <div class="section">
                 <span class="text-gray">First seen in:</span>
                 <span>{{ person.episode }}</span>
-                
+
             </div>
         </div>
 
@@ -118,5 +118,13 @@ img {
     border-radius: 0.5rem;
     margin: 0.75rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+@media (max-width: 1024px) {
+    .person {
+        max-width: 80vw;
+        height: auto;
+        flex-direction: column;
+    }
 }
 </style>
