@@ -1,18 +1,27 @@
 <template>
   <div class="my-head">
     <SearchInput v-model="name" :placeholder="'name'" />
-    <SearchInput v-model="status" :placeholder="'status'" />
+    <SearchSelect :options="options" :placeholder="'All statuses'" v-model="status" />
     <MyButton @click="search">Применить</MyButton>
   </div>
 </template>
 
 <script setup lang="ts">
+import type { OptionForSelect } from '@/interfaces/OptionForSelect';
+
 import SearchInput from '@/components/SearchInput.vue';
 import MyButton from '@/components/MyButton.vue';
+import SearchSelect from '@/components/SearchSelect.vue';
 
 import { useMakeData } from '@/composables/useMakeData';
 
 const { name, status, currentPage, makeData } = useMakeData();
+
+const options: OptionForSelect[] = [
+  { value: 'Alive', title: 'Alive' },
+  { value: 'Dead', title: 'Dead' },
+  { value: 'Unknown', title: 'Unknown' },
+]
 
 const search = () => {
   currentPage.value = 1;
